@@ -2,7 +2,6 @@
 @use '../../styles/mixin.scss'; 
 
 .container{
-    max-width: 300px;
     background: #ffffff;
     border-radius: 12px;
     overflow: hidden;
@@ -59,7 +58,6 @@
 
         .extra{
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: flex-start;
 
@@ -70,6 +68,7 @@
                 display: inline-flex;
                 align-items: center;
                 justify-content: center;
+                @include mixin.longTextProcessing;
 
                 img{
                     width: 16px;

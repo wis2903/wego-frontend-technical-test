@@ -5,7 +5,7 @@ const config = {
         foodAPIEndpoint: 'a24cfec5-f76c-410b-a5ac-9f63fab28abb',
     },
     pagination: {
-        numberOfItemsPerPage: 9,
+        numberOfItemsPerPage: 12,
     }
 
 };
