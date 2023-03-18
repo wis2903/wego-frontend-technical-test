@@ -1,3 +1,5 @@
+@use '../../styles/theme.scss';
+
 .container{
     button{
         border-radius: 0;
@@ -9,13 +11,13 @@
         }
 
         &:first-child{
-            border-top-left-radius: 10px;
-            border-bottom-left-radius: 10px;
+            border-top-left-radius: theme.$elementDefaultBorderRadius;
+            border-bottom-left-radius: theme.$elementDefaultBorderRadius;
         }
 
         &:last-child{
-            border-top-right-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-top-right-radius: theme.$elementDefaultBorderRadius;
+            border-bottom-right-radius: theme.$elementDefaultBorderRadius;
         }
 
         &.active{
