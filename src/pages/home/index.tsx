@@ -2,10 +2,10 @@ import React from 'react';
 import Button from '../../components/button';
 import FoodCard from '../../components/food-card';
 import Input from '../../components/input';
-import Tab from '../../components/tab';
 import styles from './styles.module.scss';
-import { FoodPromotionEnum } from '../../constants/enum';
 import SearchIcon from '../../resources/images/search.png';
+import HomePageCategories from './categories';
+import { FoodPromotionEnum } from '../../constants/enum';
 
 const HomePage = (): JSX.Element => {
     return (
@@ -13,47 +13,13 @@ const HomePage = (): JSX.Element => {
             <div className={styles.mainContent}>
                 <div className={styles.header}>
                     <div className={styles.search}>
-                        <Input 
-                            placeholder='Enter restaurant name... ' 
+                        <Input
+                            placeholder='Enter restaurant name... '
                             iconUrl={SearchIcon}
                         />
                     </div>
 
-                    <div className={styles.categories}>
-                        <Tab
-                            items={[
-                                {
-                                    title: 'All',
-                                    value: 'all',
-                                    active: true,
-                                },
-                                {
-                                    title: 'Sushi',
-                                    value: 'sushi',
-                                },
-                                {
-                                    title: 'Pizza',
-                                    value: 'pizza',
-                                },
-                                {
-                                    title: 'Burgers',
-                                    value: 'burgers',
-                                },
-                                {
-                                    title: 'Hot meals',
-                                    value: 'hot-meals',
-                                },
-                                {
-                                    title: 'Desserts',
-                                    value: 'desserts',
-                                },
-                                {
-                                    title: 'Drinks',
-                                    value: 'drinks',
-                                },
-                            ]}
-                        />
-                    </div>
+                    <HomePageCategories />
                 </div>
 
                 <div className={styles.list}>

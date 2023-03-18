@@ -13,3 +13,8 @@ declare interface IFoodDetails {
     promotion?: FoodPromotion,
     isNew?: boolean,
 }
+
+declare interface ICategoryDetails {
+    id: string,
+    name: string,
+}
