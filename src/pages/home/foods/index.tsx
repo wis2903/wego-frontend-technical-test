@@ -1,17 +1,26 @@
+
 import React from 'react';
 import Button from '../../../components/button';
 import FoodCard from '../../../components/food-card';
-import { foodService } from '../../../services/food.service';
 import FoodsPlaceholder from './placeholder';
 import styles from './styles.module.scss';
+import config from '../../../config';
+import { foodService } from '../../../services/food.service';
 
 interface IFoodState {
     loading: boolean,
     data?: IFoodDetails[],
 }
 
-const HomePageFoods = (): JSX.Element => {
+interface ILimitationCache {
+    categoryId: string,
+    limit: number,
+}
+
+const HomePageFoods = ({ categoryId, keyword }: { categoryId: string, keyword: string }): JSX.Element => {
     const [foods, setFoods] = React.useState<IFoodState>({ loading: true });
+    const [toggle, setToggle] = React.useState<boolean>(true);
+    const limitationCache = React.useRef<ILimitationCache[]>([]);
 
     const fetchFoods = async (): Promise<void> => {
         try {
@@ -22,16 +31,35 @@ const HomePageFoods = (): JSX.Element => {
         }
     };
 
+    const refresh = (): void => {
+        setToggle(!toggle);
+    };
+
+    const handleShowMoreFoods = (): void => {
+        let limit = limitationCache.current.find(item => item.categoryId === categoryId)?.limit || config.pagination.numberOfItemsPerPage;
+        limit += config.pagination.numberOfItemsPerPage;
+        const cachedLimitation = limitationCache.current.find(item => item.categoryId === categoryId);
+        if (cachedLimitation) cachedLimitation.limit = limit;
+        else limitationCache.current.push({ categoryId, limit });
+        refresh();
+    };
+
     React.useEffect(() => {
         fetchFoods();
     }, []);
 
     if (foods.loading) return <FoodsPlaceholder />;
     if (!foods.data) return <></>;
+
+    const limit = limitationCache.current.find(item => item.categoryId === categoryId)?.limit || config.pagination.numberOfItemsPerPage;
+    let filteredFoods = !categoryId ? foods.data : foods.data.filter(item => item.categoryId === categoryId);
+    filteredFoods = filteredFoods.filter(item => item.name.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) > -1);
+    const filteredFoodsWithLimitation = filteredFoods.slice(0, limit);
+
     return (
         <div className={styles.container}>
             {
-                foods.data.map(item =>
+                filteredFoodsWithLimitation.map(item =>
                     <FoodCard
                         key={item.id}
                         className={styles.foodCard}
@@ -40,12 +68,16 @@ const HomePageFoods = (): JSX.Element => {
                 )
             }
 
-            <div className={styles.pagination}>
-                <Button outline>
-                    <span>+</span>
-                    Show More
-                </Button>
-            </div>
+            {
+                limit < filteredFoods.length
+                &&
+                <div className={styles.pagination}>
+                    <Button outline onClick={handleShowMoreFoods}>
+                        <span>+</span>
+                        Show More
+                    </Button>
+                </div>
+            }
         </div>
     );
 };

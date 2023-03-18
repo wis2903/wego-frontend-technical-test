@@ -17,7 +17,7 @@ export const parseFoodData = (data: Record<string, unknown>): IFoodDetails => {
         minCookTime: Number(data.minCookTime),
         maxCookTime: Number(data.maxCookTime),
         restaurant: String(data.restaurant),
-        imageUrl: String(data.imageUrl),
+        imageUrl: `${String(data.imageUrl)}?v=${Math.random()}`,
         promotion: FoodPromotionStringToEnum(data.promotion),
         isNew: Boolean(data.isNew),
     };

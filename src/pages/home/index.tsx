@@ -6,6 +6,9 @@ import HomePageCategories from './categories';
 import HomePageFoods from './foods';
 
 const HomePage = (): JSX.Element => {
+    const [activeCategoryId, setActiveCategoryId] = React.useState<string>('');
+    const [keyword, setKeyword] = React.useState<string>('');
+
     return (
         <div className={styles.container}>
             <div className={styles.mainContent}>
@@ -14,13 +17,19 @@ const HomePage = (): JSX.Element => {
                         <Input
                             placeholder='Enter restaurant name... '
                             iconUrl={SearchIcon}
+                            value={keyword}
+                            onChange={(e): void => {
+                                setKeyword(e.target.value);
+                            }}
                         />
                     </div>
 
-                    <HomePageCategories />
+                    <HomePageCategories onChange={(catId): void => {
+                        setActiveCategoryId(catId);
+                    }} />
                 </div>
 
-                <HomePageFoods />
+                <HomePageFoods categoryId={activeCategoryId} keyword={keyword} />
             </div>
         </div>
     );

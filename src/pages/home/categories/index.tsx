@@ -9,11 +9,11 @@ interface ICategoriesState {
 }
 
 const categoryForAllItem: ICategoryDetails = {
-    id: 'all',
+    id: '',
     name: 'All',
 };
 
-const HomePageCategories = (): JSX.Element => {
+const HomePageCategories = ({ onChange }: { onChange: (categoryId: string) => void }): JSX.Element => {
     const [categories, setCategories] = React.useState<ICategoriesState>({ loading: true });
 
     const fetchCategoryData = async (): Promise<void> => {
@@ -29,7 +29,7 @@ const HomePageCategories = (): JSX.Element => {
         fetchCategoryData();
     }, []);
 
-    if(categories.loading) return (
+    if (categories.loading) return (
         <div className={styles.placeholder}>
             <div />
             <div />
@@ -53,6 +53,9 @@ const HomePageCategories = (): JSX.Element => {
                             value: item.id,
                             active: item.id === categoryForAllItem.id,
                         }))}
+                        onChange={(selected): void => {
+                            onChange(String(selected.value));
+                        }}
                     />
                 </div>
             }
