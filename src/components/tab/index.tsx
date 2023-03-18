@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import React from 'react';
 import Button from '../button';
 import styles from './styles.module.scss';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 interface ITabItemData {
     title: string,
@@ -26,21 +27,26 @@ const Tab = ({ className, items, onChange }: ITabProps): JSX.Element => {
     };
 
     return (
-        <div className={classNames(styles.container, className)}>
-            {items.map(item =>
-                <Button
-                    key={item.value}
-                    outline
-                    primary={item.value === activeItem?.value}
-                    className={classNames(item.value === activeItem?.value && styles.active)}
-                    onClick={(): void => {
-                        handleChangeTab(item);
-                    }}
-                >
-                    {item.title}
-                </Button>
-            )}
-        </div>
+        <Scrollbars
+            className={classNames(styles.container, className)}
+            autoHeight
+        >
+            <div className={styles.wrapper}>
+                {items.map(item =>
+                    <Button
+                        key={item.value}
+                        outline
+                        primary={item.value === activeItem?.value}
+                        className={classNames(item.value === activeItem?.value && styles.active)}
+                        onClick={(): void => {
+                            handleChangeTab(item);
+                        }}
+                    >
+                        {item.title}
+                    </Button>
+                )}
+            </div>
+        </Scrollbars>
     );
 };
 
