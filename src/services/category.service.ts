@@ -5,7 +5,7 @@ import { parseCategoryData } from '../helpers/data.helper';
 class CategoryService {
     list(): Promise<ICategoryDetails[]> {
         return new Promise((resolve, reject) => {
-            axios.get(`${config.apiBaseUrl}/${config.categoryAPIEndpoint}`).then(res => {
+            axios.get(`${config.api.apiBaseUrl}/${config.api.categoryAPIEndpoint}`).then(res => {
                 if (!Array.isArray(res.data)) reject(new Error('categories list not found'));
                 resolve(res.data.map((item: Record<string, unknown>) => parseCategoryData(item)));
             }).catch(e => {
