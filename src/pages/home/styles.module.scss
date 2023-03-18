@@ -1,0 +1,46 @@
+.container{
+    .mainContent{
+        width: 100%;
+        width: 975px;
+        margin: auto;
+
+        .header{
+            margin: 0 0 45px;
+        }
+
+        .search{
+            max-width: 312px;
+            margin: 0 0 50px;
+        }
+    }
+
+    .list{
+        display: flex;
+        flex-wrap: wrap;
+        margin: -12px;
+
+        .foodCard{
+            margin: 12px;
+            width: calc(33.33% - 24px);
+        }
+
+        .pagination{
+            margin: 20px 0 0;
+            padding: 12px;
+            display: flex;
+            width: 100%;
+            align-items: center;
+            justify-content: center;
+
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                span{
+                    margin: 0 4px 0 0;
+                }
+            }
+        }
+    }
+}
