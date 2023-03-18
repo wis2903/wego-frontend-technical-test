@@ -1,3 +1,4 @@
+import MiniSearch from 'minisearch';
 import { FoodPromotionStringToEnum } from '../constants/enum';
 
 export const parseCategoryData = (data: Record<string, unknown>): ICategoryDetails => {
@@ -21,4 +22,20 @@ export const parseFoodData = (data: Record<string, unknown>): IFoodDetails => {
         promotion: FoodPromotionStringToEnum(data.promotion),
         isNew: Boolean(data.isNew),
     };
+};
+
+export const searchFoods = (data: IFoodDetails[], keyword: string): IFoodDetails[] => {
+    if (!keyword) return data;
+
+    const miniSearch = new MiniSearch({
+        fields: ['name'],
+        storeFields: Object.keys(data[0]),
+        searchOptions: {
+            prefix: true,
+            fuzzy: 3,
+          }
+    });
+    miniSearch.addAll(data);
+    const results = miniSearch.search(keyword);
+    return results.map(item => parseFoodData(item));
 };

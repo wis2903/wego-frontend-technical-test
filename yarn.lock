@@ -4095,6 +4095,7 @@ __metadata:
     eslint-plugin-promise: "npm:^6.0.0"
     eslint-plugin-react: "npm:^7.31.11"
     eslint-plugin-react-hooks: "npm:^4.2.0"
+    minisearch: "npm:^6.0.1"
     react: "npm:^18.2.0"
     react-custom-scrollbars: "npm:^4.2.1"
     react-dom: "npm:^18.2.0"
@@ -9121,6 +9122,13 @@ __metadata:
   version: 4.2.4
   resolution: "minipass@npm:4.2.4"
   checksum: 39b2e353044a8b4c7d160ccffae9486312137df28a9e2a8d093a528a9d3602b4dce2b2204a17ca11762d352bd9750fd6506229766a0fb7a6199092aa3f9490e5
+  languageName: node
+  linkType: hard
+
+"minisearch@npm:^6.0.1":
+  version: 6.0.1
+  resolution: "minisearch@npm:6.0.1"
+  checksum: 9c858e69c8349fc566266611d900b161200f3c0585b5484a2f6cace73ef169b2c492ce2cc11dc49f8ca426f1b15ebbf59191222919c24bc91953a6af76bf272c
   languageName: node
   linkType: hard
 
