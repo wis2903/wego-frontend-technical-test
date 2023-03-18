@@ -1,0 +1,50 @@
+@use '../../../styles/theme.scss';
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -12px;
+
+    .foodCard {
+        margin: 12px;
+        width: calc(33.33% - 24px);
+    }
+
+    .pagination {
+        margin: 20px 0 0;
+        padding: 12px;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            span {
+                margin: 0 4px 0 0;
+            }
+        }
+    }
+}
+
+.placeholder {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -12px;
+    width: 100%;
+
+    .placeholderItem{
+        margin: 12px;
+        width: calc(33.33% - 24px);
+        height: 273px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: theme.$elementDefaultBorderRadius;
+        background: #e5e5e5;
+    }
+}

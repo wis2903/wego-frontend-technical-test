@@ -1,4 +1,4 @@
-type FoodPromotion =  import('../constants/enum').FoodPromotionEnum;
+type FoodPromotion = import('../constants/enum').FoodPromotionEnum;
 
 declare interface IFoodDetails {
     id: string,
