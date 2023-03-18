@@ -5,6 +5,7 @@
         border-radius: 0;
         color: #888888;
         font-size: 14px;
+        text-transform: capitalize;
 
         &:not(:first-child){
             border-left: 0;

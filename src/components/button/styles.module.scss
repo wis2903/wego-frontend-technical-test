@@ -20,6 +20,10 @@
         background: theme.$primayColor;
     }
 
+    &:hover{
+        color: theme.$primayColor;
+    }
+
     &.disabled{
         cursor: not-allowed;
     }
