@@ -1,4 +1,4 @@
-# Wego - Technical Test: Senior Frontend Engineer – Hotels (Whiskey)
+# Wego - Technical Test: Senior Frontend Engineer
 
 ## Requirement: 
 On initial visit to the website, it will show the list of foods for users to order <br />
