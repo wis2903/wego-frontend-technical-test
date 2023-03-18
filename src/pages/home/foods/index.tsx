@@ -7,7 +7,7 @@ import styles from './styles.module.scss';
 import config from '../../../config';
 import FoodEmptyResults from './empty';
 import { foodService } from '../../../services/food.service';
-// import { searchFoods } from '../../../helpers/data.helper';
+import { searchFoods } from '../../../helpers/data.helper';
 
 interface IFoodState {
     loading: boolean,
@@ -55,8 +55,8 @@ const HomePageFoods = ({ categoryId, keyword }: { categoryId: string, keyword: s
 
     const limit = limitationCache.current.find(item => item.categoryId === categoryId)?.limit || config.pagination.numberOfItemsPerPage;
     const filteredFoodsByCategory = !categoryId ? foods.data : foods.data.filter(item => item.categoryId === categoryId);
-    const filteredFoods = filteredFoodsByCategory.filter(item => item.name.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) > -1);
-    // const filteredFoods = searchFoods(filteredFoodsByCategory, keyword);
+    // const filteredFoods = filteredFoodsByCategory.filter(item => item.name.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) > -1);
+    const filteredFoods = searchFoods(filteredFoodsByCategory, keyword);
     const filteredFoodsWithLimitation = filteredFoods.slice(0, limit);
 
     if (!filteredFoodsWithLimitation.length) return (

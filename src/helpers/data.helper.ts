@@ -25,13 +25,17 @@ export const parseFoodData = (data: Record<string, unknown>): IFoodDetails => {
 };
 
 export const searchFoods = (data: IFoodDetails[], keyword: string): IFoodDetails[] => {
-    if(!keyword) return data;
-    
+    if (!keyword) return data;
+
     const miniSearch = new MiniSearch({
-        fields: ['name', 'restaurant'],
+        fields: ['name'],
+        storeFields: Object.keys(data[0]),
+        searchOptions: {
+            prefix: true,
+            fuzzy: 3,
+          }
     });
     miniSearch.addAll(data);
-    // const results = miniSearch.search(keyword);
-    // console.log(results);
-    return [];
+    const results = miniSearch.search(keyword);
+    return results.map(item => parseFoodData(item));
 };
