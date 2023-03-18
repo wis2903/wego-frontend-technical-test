@@ -1,0 +1,26 @@
+@use '../../../styles/theme.scss';
+
+.placeholder{
+    height: 40px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 -2px;
+
+    > div{
+        height: 40px;
+        width: 80px;
+        margin: 0 2px;
+        background: #e5e5e5;
+
+        &:first-child{
+            border-top-left-radius: theme.$elementDefaultBorderRadius;
+            border-bottom-left-radius: theme.$elementDefaultBorderRadius;
+        }
+
+        &:last-child{
+            border-top-right-radius: theme.$elementDefaultBorderRadius;
+            border-bottom-right-radius: theme.$elementDefaultBorderRadius;
+        }
+    }
+}
