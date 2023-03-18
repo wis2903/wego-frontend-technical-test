@@ -5,7 +5,9 @@ import FoodCard from '../../../components/food-card';
 import FoodsPlaceholder from './placeholder';
 import styles from './styles.module.scss';
 import config from '../../../config';
+import FoodEmptyResults from './empty';
 import { foodService } from '../../../services/food.service';
+// import { searchFoods } from '../../../helpers/data.helper';
 
 interface IFoodState {
     loading: boolean,
@@ -52,9 +54,16 @@ const HomePageFoods = ({ categoryId, keyword }: { categoryId: string, keyword: s
     if (!foods.data) return <></>;
 
     const limit = limitationCache.current.find(item => item.categoryId === categoryId)?.limit || config.pagination.numberOfItemsPerPage;
-    let filteredFoods = !categoryId ? foods.data : foods.data.filter(item => item.categoryId === categoryId);
-    filteredFoods = filteredFoods.filter(item => item.name.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) > -1);
+    const filteredFoodsByCategory = !categoryId ? foods.data : foods.data.filter(item => item.categoryId === categoryId);
+    const filteredFoods = filteredFoodsByCategory.filter(item => item.name.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) > -1);
+    // const filteredFoods = searchFoods(filteredFoodsByCategory, keyword);
     const filteredFoodsWithLimitation = filteredFoods.slice(0, limit);
+
+    if (!filteredFoodsWithLimitation.length) return (
+        <FoodEmptyResults
+            suggestion={filteredFoodsByCategory.slice(0, config.pagination.numberOfItemsPerPage)}
+        />
+    );
 
     return (
         <div className={styles.container}>
