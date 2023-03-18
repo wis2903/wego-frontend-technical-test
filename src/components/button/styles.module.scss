@@ -1,0 +1,26 @@
+@use '../../styles/theme.scss';
+
+.container{
+    outline: 0;
+    border: 1px solid transparent;
+    background: #ffffff;
+    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 10px;
+    min-height: 40px;
+    cursor: pointer;
+    font-size: 13px;
+
+    &.outline, &.primary {
+        border-color: theme.$primayColor;
+        background: 0;
+    }
+
+    &.primary{
+        background: theme.$primayColor;
+    }
+
+    &.disabled{
+        cursor: not-allowed;
+    }
+}
