@@ -1,11 +1,22 @@
 @use '../../styles/theme.scss';
+@use '../../styles/mixin.scss';
+
 
 .container{
+    // overflow: auto;
+    // width: 100%;
+    
+    .wrapper{
+        width: max-content;
+        padding-bottom: 16px;
+    }
+
     button{
         border-radius: 0;
         color: #888888;
         font-size: 14px;
         text-transform: capitalize;
+        @include mixin.longTextProcessing;
 
         &:not(:first-child){
             border-left: 0;

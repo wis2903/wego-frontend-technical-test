@@ -46,18 +46,16 @@ const HomePageCategories = ({ onChange }: { onChange: (categoryId: string) => vo
                 !categories.loading
                 && categories.data
                 &&
-                <div className={styles.categories}>
-                    <Tab
-                        items={categories.data.map(item => ({
-                            title: item.name,
-                            value: item.id,
-                            active: item.id === categoryForAllItem.id,
-                        }))}
-                        onChange={(selected): void => {
-                            onChange(String(selected.value));
-                        }}
-                    />
-                </div>
+                <Tab
+                    items={categories.data.map(item => ({
+                        title: item.name,
+                        value: item.id,
+                        active: item.id === categoryForAllItem.id,
+                    }))}
+                    onChange={(selected): void => {
+                        onChange(String(selected.value));
+                    }}
+                />
             }
         </>
     );
