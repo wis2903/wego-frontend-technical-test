@@ -7,6 +7,11 @@
     overflow: hidden;
     position: relative;
     box-shadow: rgba(149, 157, 165, 0.1) 0px 6px 20px;
+    transition: transform linear 0.3s;
+
+    &:hover{
+        transform: scale(1.05);
+    }
 
     .previewImage{
         background-color: #e5e5e5;
