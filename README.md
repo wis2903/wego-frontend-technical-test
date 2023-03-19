@@ -42,7 +42,7 @@ yarn start
     - maxCookTime: number <br />
     - restaurant: string <br />
     - imageUrl: string <br />
-    - promotion?: FoodPromotion //gift | '1+1' | 'discount' <br />
+    - promotion?: FoodPromotion //'gift' | '1+1' | 'discount' <br />
     - isNew?: boolean <br />
 
 ### Services:
