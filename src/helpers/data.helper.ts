@@ -1,6 +1,11 @@
 import MiniSearch from 'minisearch';
 import { FoodPromotionStringToEnum } from '../constants/enum';
 
+/**
+ * Parse data object to ICategoryDetails type
+ * @param data: Input data object - Record<string, unknown>
+ * @returns ICategoryDetails
+ */
 export const parseCategoryData = (data: Record<string, unknown>): ICategoryDetails => {
     return {
         id: String(data.id),
@@ -8,6 +13,11 @@ export const parseCategoryData = (data: Record<string, unknown>): ICategoryDetai
     };
 };
 
+/**
+ * Parse data object to IFoodDetails type
+ * @param data: Input data object - Record<string, unknown>
+ * @returns IFoodDetails
+ */
 export const parseFoodData = (data: Record<string, unknown>): IFoodDetails => {
     return {
         id: String(data.id),
@@ -24,16 +34,22 @@ export const parseFoodData = (data: Record<string, unknown>): IFoodDetails => {
     };
 };
 
+/**
+ * Search foods by a given keyword using Mini search
+ * @param data: List of foods in IFoodDetails type
+ * @param keyword: Keyword to filter in string
+ * @returns List of foods filtered by keyword
+ */
 export const searchFoods = (data: IFoodDetails[], keyword: string): IFoodDetails[] => {
     if (!keyword) return data;
 
     const miniSearch = new MiniSearch({
-        fields: ['name'],
+        fields: ['name', 'restaurant'],
         storeFields: Object.keys(data[0]),
         searchOptions: {
             prefix: true,
             fuzzy: 3,
-          }
+        }
     });
     miniSearch.addAll(data);
     const results = miniSearch.search(keyword);

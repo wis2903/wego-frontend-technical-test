@@ -24,6 +24,37 @@ Please run this command in the command line <br />
 yarn start
 ```
 
+## Documents
+
+### Data types/interfaces:
+
+- Category details<br />
+
+<b>ICategoryDetails</b> {
+    id: string,
+    name: string,
+}
+<br />
+
+- Food details<br />
+
+<b>IFoodDetails</b> {
+    id: string,
+    index: number,
+    name: string,
+    categoryId: string,
+    rating: number,
+    minCookTime: number,
+    maxCookTime: number,
+    restaurant: string,
+    imageUrl: string,
+    promotion?: FoodPromotion, //gift | '1+1' | 'discount'
+    isNew?: boolean,
+}
+
+### Components:
+
+
 The web app will open in your default browser (https://localhost:3000).
 
 ## Documents
