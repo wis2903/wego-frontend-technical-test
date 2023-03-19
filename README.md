@@ -23,6 +23,10 @@ Please run this command in the command line <br />
 ```
 yarn start
 ```
+or
+```
+npm start
+```
 
 ## Documents
 
