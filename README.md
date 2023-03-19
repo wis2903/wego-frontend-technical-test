@@ -167,6 +167,7 @@ searchFoods(foods, 'sushi'); // Return list of foods that have name/restaurant m
 
 ### Components: ###
 **FoodCard**: *Display food item* <br />
+
 Props: <br />
 - className?: string <br />
 - data: IFoodDetails <br />
