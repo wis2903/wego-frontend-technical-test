@@ -164,3 +164,28 @@ let foods: IFoodDetails[] = [
 
 searchFoods(foods, 'sushi'); // Return list of foods that have name/restaurant match the keyword
 ```
+
+### Components: ###
+**FoodCard**: *Display food item* <br />
+Props: <br />
+- className?: string <br />
+- data: IFoodDetails <br />
+
+Usage
+```
+const food = {
+    id: ...
+    index: ...,
+    rating: ...,
+    promotion: ...,
+    isNew: ...,
+    categoryId: ...,
+    minCookTime: ...,
+    maxCookTime: ...,
+    restaurant: ...,
+    name: ...,
+    imageUrl: ...
+}
+  
+<FoodCard data={food} />
+```
