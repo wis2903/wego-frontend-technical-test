@@ -28,39 +28,6 @@ yarn start
 
 ### Data types/interfaces:
 
-- Category details<br />
-
-<b>ICategoryDetails</b> {
-    id: string,
-    name: string,
-}
-<br />
-
-- Food details<br />
-
-<b>IFoodDetails</b> {
-    id: string,
-    index: number,
-    name: string,
-    categoryId: string,
-    rating: number,
-    minCookTime: number,
-    maxCookTime: number,
-    restaurant: string,
-    imageUrl: string,
-    promotion?: FoodPromotion, //gift | '1+1' | 'discount'
-    isNew?: boolean,
-}
-
-### Components:
-
-
-The web app will open in your default browser (https://localhost:3000).
-
-## Documents
-
-### Data types/interfaces:
-
 **ICategoryDetails**: *Interface for data of category* <br />
     - id: string <br />
     - name: string <br />
